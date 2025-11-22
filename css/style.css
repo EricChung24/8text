@@ -13,6 +13,7 @@ body {
   --color-fire: #f87171;
   --color-earth: #fbbf24;
   --color-metal: #e5e7eb;
+  --color-gold: var(--color-metal);
   --color-water: #60a5fa;
 }
 /* 元素顏色 */
@@ -27,6 +28,10 @@ body {
 }
 .metal {
   color: var(--color-metal);
+}
+.gold {
+  /* JS 使用 'gold' 作為五行名稱，這裡提供同名 class 以對齊 */
+  color: var(--color-gold);
 }
 .water {
   color: var(--color-water);
