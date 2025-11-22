@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap");
+
+body {
+  font-family: "Noto Serif TC", serif;
+  background-color: #121212;
+  color: #e5e5e5;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23333333' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+/*元素顏色變數*/
+:root
+{
+  --color-wood: #4ade80;
+  --color-fire: #f87171;
+  --color-earth: #fbbf24;
+  --color-metal: #e5e7eb;
+  --color-water: #60a5fa;
+}
+/* 元素顏色 */
+.wood {
+  color: var(--color-wood);
+}
+.fire {
+  color: var(--color-fire);
+}
+.earth {
+  color: var(--color-earth);
+}
+.metal {
+  color: var(--color-metal);
+}
+.water {
+  color: var(--color-water);
+}
+
+.gan-zhi-text {
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* 容器樣式 */
+.scroll-border {
+  border: 1px solid #333;
+  background: linear-gradient(145deg, #1e1e1e, #252525);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.input-dark {
+  background-color: #2d2d2d;
+  border: 1px solid #444;
+  color: #fff;
+  transition: all 0.3s;
+}
+.input-dark:focus {
+  outline: none;
+  border-color: #d4b483;
+  box-shadow: 0 0 10px rgba(212, 180, 131, 0.1);
+}
+
+/* 運勢卡片詳情樣式 */
+.fortune-detail-item {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  border-bottom: 1px dashed #444;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+.fortune-detail-item:last-child {
+  border-bottom: none;
+}
+.fortune-label {
+  color: #d4b483;
+  font-weight: bold;
+  display: inline-block;
+  width: 60px;
+}
+
+.lucky-tag {
+  background: #d4b483;
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
