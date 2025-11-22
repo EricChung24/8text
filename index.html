@@ -1,159 +1,206 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>木森玄機 - 專業八字運勢詳解</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>木森玄機 - 八字解析及十年運勢詳解</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body class="min-h-screen p-4 md:p-8 flex justify-center">
-
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body class="min-h-screen p-4 md:p-8 flex justify-center">
     <div class="max-w-6xl w-full">
-        
-        <!-- Title -->
-        <div class="text-center mb-10">
-            <h1 class="text-4xl md:text-5xl font-bold text-[#d4b483] mb-2 tracking-widest" style="text-shadow: 0 0 20px rgba(212, 180, 131, 0.3);">- 木森玄機 -</h1>
-            <p class="text-gray-500 text-sm tracking-[0.3em]">八字命理與流年詳批</p>
-           
+      <!-- Title -->
+      <div class="text-center mb-10">
+        <h1
+          class="text-4xl md:text-5xl font-bold text-[#d4b483] mb-2 tracking-widest"
+          style="text-shadow: 0 0 20px rgba(212, 180, 131, 0.3)"
+        >
+          - 木森玄機 -
+        </h1>
+        <p class="text-gray-500 text-sm tracking-[0.3em]">八字命理與流年詳批</p>
+      </div>
+
+      <!-- Input Area -->
+      <div class="scroll-border rounded-xl p-8 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 input-grid">
+          <div>
+            <label
+              class="block text-[#d4b483] text-xs font-bold mb-2 uppercase tracking-wider"
+              >出生日期 (國曆)</label
+            >
+            <input
+              type="date"
+              id="birthDate"
+              class="w-full p-3 rounded-lg input-dark"
+            />
+          </div>
+          <div>
+            <label
+              class="block text-[#d4b483] text-xs font-bold mb-2 uppercase tracking-wider"
+              >出生時間</label
+            >
+            <select id="birthHour" class="w-full p-3 rounded-lg input-dark">
+              <option value="-1">未知時辰</option>
+              <option value="0">子時 (23:00 - 01:00)</option>
+              <option value="1">丑時 (01:00 - 03:00)</option>
+              <option value="2">寅時 (03:00 - 05:00)</option>
+              <option value="3">卯時 (05:00 - 07:00)</option>
+              <option value="4">辰時 (07:00 - 09:00)</option>
+              <option value="5">巳時 (09:00 - 11:00)</option>
+              <option value="6">午時 (11:00 - 13:00)</option>
+              <option value="7">未時 (13:00 - 15:00)</option>
+              <option value="8">申時 (15:00 - 17:00)</option>
+              <option value="9">酉時 (17:00 - 19:00)</option>
+              <option value="10">戌時 (19:00 - 21:00)</option>
+              <option value="11">亥時 (21:00 - 23:00)</option>
+            </select>
+          </div>
+          <div>
+            <label
+              class="block text-[#d4b483] text-xs font-bold mb-2 uppercase tracking-wider"
+              >性別</label
+            >
+            <select id="genderSelect" class="w-full p-3 rounded-lg input-dark">
+              <option value="male">男</option>
+              <option value="female">女</option>
+            </select>
+          </div>
+          <div class="flex items-end">
+            <button
+              id="startBtn"
+              onclick="startWithLoading()"
+              class="w-full bg-gradient-to-r from-[#d4b483] to-[#c2a070] hover:from-[#e5c594] hover:to-[#d4b483] text-gray-900 font-bold p-3 rounded-lg transition duration-300 shadow-lg transform hover:-translate-y-0.5"
+            >
+              開始詳批
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Result Area -->
+      <div id="resultSection" class="hidden space-y-8 animate-fade-in">
+        <!-- 1. 四柱排盤 -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="scroll-border p-6 rounded-lg text-center relative">
+            <div class="text-xs text-gray-500 mb-2">年柱 (根)</div>
+            <div class="gan-zhi-text mb-2" id="yearStem"></div>
+            <div class="gan-zhi-text" id="yearBranch"></div>
+            <div class="mt-2 text-xs text-gray-600" id="yearNaYin"></div>
+          </div>
+          <div class="scroll-border p-6 rounded-lg text-center relative">
+            <div class="text-xs text-gray-500 mb-2">月柱 (苗)</div>
+            <div class="gan-zhi-text mb-2" id="monthStem"></div>
+            <div class="gan-zhi-text" id="monthBranch"></div>
+            <div class="mt-2 text-xs text-gray-600" id="monthNaYin"></div>
+          </div>
+          <div
+            class="scroll-border p-6 rounded-lg text-center relative border-2 border-[#d4b483]/30"
+          >
+            <div class="text-xs text-[#d4b483] mb-2 font-bold">日柱 (本命)</div>
+            <div class="gan-zhi-text mb-2" id="dayStem"></div>
+            <div class="gan-zhi-text" id="dayBranch"></div>
+            <div class="mt-2 text-xs text-gray-600" id="dayNaYin"></div>
+          </div>
+          <div class="scroll-border p-6 rounded-lg text-center relative">
+            <div class="text-xs text-gray-500 mb-2">時柱 (果)</div>
+            <div class="gan-zhi-text mb-2" id="hourStem"></div>
+            <div class="gan-zhi-text" id="hourBranch"></div>
+            <div class="mt-2 text-xs text-gray-600" id="hourNaYin"></div>
+          </div>
         </div>
 
-        <!-- Input Area -->
-        <div class="scroll-border rounded-xl p-8 mb-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 input-grid">
-                <div>
-                    <label class="block text-[#d4b483] text-xs font-bold mb-2 uppercase tracking-wider">出生日期 (國曆)</label>
-                    <input type="date" id="birthDate" class="w-full p-3 rounded-lg input-dark">
-                </div>
-                <div>
-                    <label class="block text-[#d4b483] text-xs font-bold mb-2 uppercase tracking-wider">出生時間</label>
-                    <select id="birthHour" class="w-full p-3 rounded-lg input-dark">
-                        <option value="-1">未知時辰</option>
-                        <option value="0">子時 (23:00 - 01:00)</option>
-                        <option value="1">丑時 (01:00 - 03:00)</option>
-                        <option value="2">寅時 (03:00 - 05:00)</option>
-                        <option value="3">卯時 (05:00 - 07:00)</option>
-                        <option value="4">辰時 (07:00 - 09:00)</option>
-                        <option value="5">巳時 (09:00 - 11:00)</option>
-                        <option value="6">午時 (11:00 - 13:00)</option>
-                        <option value="7">未時 (13:00 - 15:00)</option>
-                        <option value="8">申時 (15:00 - 17:00)</option>
-                        <option value="9">酉時 (17:00 - 19:00)</option>
-                        <option value="10">戌時 (19:00 - 21:00)</option>
-                        <option value="11">亥時 (21:00 - 23:00)</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-[#d4b483] text-xs font-bold mb-2 uppercase tracking-wider">性別</label>
-                    <select id="genderSelect" class="w-full p-3 rounded-lg input-dark">
-                        <option value="male">男</option>
-                        <option value="female">女</option>
-                    </select>
-                </div>
-                <div class="flex items-end">
-                    <button id="startBtn" onclick="startWithLoading()" class="w-full bg-gradient-to-r from-[#d4b483] to-[#c2a070] hover:from-[#e5c594] hover:to-[#d4b483] text-gray-900 font-bold p-3 rounded-lg transition duration-300 shadow-lg transform hover:-translate-y-0.5">
-                        開始詳批
-                    </button>
-                </div>
+        <!-- 2. 命盤強弱與喜用神建議 -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- 五行能量圖 -->
+          <div class="scroll-border rounded-lg p-6 lg:col-span-1">
+            <h3
+              class="text-[#d4b483] text-lg font-bold mb-4 pb-2 border-b border-gray-700"
+            >
+              五行能量分佈
+            </h3>
+            <div class="space-y-3">
+              <!-- 五行 Bar (JS 生成) -->
+              <div id="fiveElementsChart" class="space-y-3"></div>
             </div>
+          </div>
+
+          <!-- 喜用神與補運 -->
+          <div class="scroll-border rounded-lg p-6 lg:col-span-2">
+            <h3
+              class="text-[#d4b483] text-lg font-bold mb-4 pb-2 border-b border-gray-700 flex justify-between items-center"
+            >
+              <span>喜用神與開運建議</span>
+              <span
+                id="strengthTag"
+                class="text-xs px-2 py-1 bg-gray-700 rounded text-gray-300"
+              ></span>
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <p class="text-gray-400 text-sm mb-2">您的喜用神為：</p>
+                <div id="usefulGodText" class="text-2xl font-bold mb-4"></div>
+                <div id="luckyAdvice" class="text-sm text-gray-300 space-y-2">
+                  <!-- JS 填入詳細建議 -->
+                </div>
+              </div>
+              <div class="bg-[#1a1a1a] p-4 rounded-lg border border-gray-800">
+                <h4 class="text-gray-400 text-xs font-bold mb-3 uppercase">
+                  日主性格特質
+                </h4>
+                <div
+                  id="dayMasterAnalysis"
+                  class="text-sm text-gray-300 leading-relaxed text-justify"
+                ></div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Main Result Area -->
-        <div id="resultSection" class="hidden space-y-8 animate-fade-in">
-            
-            <!-- 1. 四柱排盤 -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="scroll-border p-6 rounded-lg text-center relative">
-                    <div class="text-xs text-gray-500 mb-2">年柱 (根)</div>
-                    <div class="gan-zhi-text mb-2" id="yearStem"></div>
-                    <div class="gan-zhi-text" id="yearBranch"></div>
-                    <div class="mt-2 text-xs text-gray-600" id="yearNaYin"></div>
-                </div>
-                <div class="scroll-border p-6 rounded-lg text-center relative">
-                    <div class="text-xs text-gray-500 mb-2">月柱 (苗)</div>
-                    <div class="gan-zhi-text mb-2" id="monthStem"></div>
-                    <div class="gan-zhi-text" id="monthBranch"></div>
-                    <div class="mt-2 text-xs text-gray-600" id="monthNaYin"></div>
-                </div>
-                <div class="scroll-border p-6 rounded-lg text-center relative border-2 border-[#d4b483]/30">
-                    <div class="text-xs text-[#d4b483] mb-2 font-bold">日柱 (本命)</div>
-                    <div class="gan-zhi-text mb-2" id="dayStem"></div>
-                    <div class="gan-zhi-text" id="dayBranch"></div>
-                    <div class="mt-2 text-xs text-gray-600" id="dayNaYin"></div>
-                </div>
-                <div class="scroll-border p-6 rounded-lg text-center relative">
-                    <div class="text-xs text-gray-500 mb-2">時柱 (果)</div>
-                    <div class="gan-zhi-text mb-2" id="hourStem"></div>
-                    <div class="gan-zhi-text" id="hourBranch"></div>
-                    <div class="mt-2 text-xs text-gray-600" id="hourNaYin"></div>
-                </div>
-            </div>
+        <!-- 3. 未來十年流年詳批 -->
+        <div class="scroll-border rounded-lg p-6">
+          <div class="text-center mb-8">
+            <h3 class="text-[#d4b483] text-2xl font-bold mb-2">
+              未來十年運勢詳批
+            </h3>
+            <p class="text-gray-500 text-sm">
+              2026 (丙午) - 2036 (丙辰) | 六大面向深度解析
+            </p>
+          </div>
 
-            <!-- 2. 命盤強弱與喜用神建議 -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                
-                <!-- 五行能量圖 -->
-                <div class="scroll-border rounded-lg p-6 lg:col-span-1">
-                    <h3 class="text-[#d4b483] text-lg font-bold mb-4 pb-2 border-b border-gray-700">五行能量分佈</h3>
-                    <div class="space-y-3">
-                        <!-- 五行 Bar (JS 生成) -->
-                        <div id="fiveElementsChart" class="space-y-3"></div>
-                    </div>
-                </div>
-
-                <!-- 喜用神與補運 -->
-                <div class="scroll-border rounded-lg p-6 lg:col-span-2">
-                    <h3 class="text-[#d4b483] text-lg font-bold mb-4 pb-2 border-b border-gray-700 flex justify-between items-center">
-                        <span>喜用神與開運建議</span>
-                        <span id="strengthTag" class="text-xs px-2 py-1 bg-gray-700 rounded text-gray-300"></span>
-                    </h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <p class="text-gray-400 text-sm mb-2">您的喜用神為：</p>
-                            <div id="usefulGodText" class="text-2xl font-bold mb-4"></div>
-                            <div id="luckyAdvice" class="text-sm text-gray-300 space-y-2">
-                                <!-- JS 填入詳細建議 -->
-                            </div>
-                        </div>
-                        <div class="bg-[#1a1a1a] p-4 rounded-lg border border-gray-800">
-                            <h4 class="text-gray-400 text-xs font-bold mb-3 uppercase">日主性格特質</h4>
-                            <div id="dayMasterAnalysis" class="text-sm text-gray-300 leading-relaxed text-justify"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3. 未來十年流年詳批 -->
-            <div class="scroll-border rounded-lg p-6">
-                <div class="text-center mb-8">
-                    <h3 class="text-[#d4b483] text-2xl font-bold mb-2">未來十年運勢詳批</h3>
-                    <p class="text-gray-500 text-sm">2026 (丙午) - 2036 (丙辰) | 六大面向深度解析</p>
-                </div>
-                
-                <div id="fortuneContainer" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    <!-- JS 生成流年卡片 -->
-                </div>
-            </div>
-
-            <!-- Footer Disclaimer -->
-            <div class="text-center text-xs text-gray-600 mt-12 pb-8">
-                <p>本命理程式採用「日主強弱法」與「十神流年」演算法推算。</p>
-                <p>命理分析僅供參考，人生方向掌握在自己手中。</p>
-                <p>順應天運，把握時機！</p>
-                <p>－－－作者IG－－－</p>
-                <p class="flex justify-center"><a href="https://www.instagram.com/ericchung_878" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-       alt="Instagram" width="25">
-</a></p>
-            </div>
-
+          <div
+            id="fortuneContainer"
+            class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+          >
+            <!-- JS 生成流年卡片 -->
+          </div>
         </div>
+
+        <!-- Footer Disclaimer -->
+        <div class="text-center text-xs text-gray-600 mt-12 pb-8">
+          <p>本命理程式採用「日主強弱法」與「十神流年」演算法推算。</p>
+          <p>命理分析僅供參考，人生方向掌握在自己手中。</p>
+          <p>順應天運，把握時機！</p>
+          <p>－－－作者IG－－－</p>
+          <p class="flex justify-center">
+            <a href="https://www.instagram.com/ericchung_878" target="_blank">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                alt="Instagram"
+                width="25"
+              />
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
 
-   
-         <script src="js/db.js"></script>
-    
-</body>
+    <script src="/js/admin_api.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/pop/cop/db.js"></script>
+  </body>
 </html>
