@@ -548,6 +548,88 @@
         // Default Date
         document.getElementById('birthDate').valueAsDate = new Date();
 
+        // 調整所有下拉式選單寬度：使 select 寬度等於對應 label 文字寬度 + 10px（僅於桌面寬度）
+        function adjustSelectWidths() {
+            // 只在桌面尺寸啟動此微調（與 CSS 的 media query 保持一致）
+            const desktop = window.innerWidth >= 768;
+            const containers = document.querySelectorAll('.input-grid > div');
+
+            containers.forEach(div => {
+                const label = div.querySelector('label');
+                const sel = div.querySelector('select');
+                if (!label || !sel) return;
+
+                if (!desktop) {
+                    // 回復到 CSS 控制（行動版應為 100%）
+                    sel.style.width = '';
+                    sel.style.maxWidth = '';
+                    return;
+                }
+
+                // 建立隱藏 span 測量文字寬度（使用與 label 相同的字型樣式）
+                const style = window.getComputedStyle(label);
+                const span = document.createElement('span');
+                span.style.visibility = 'hidden';
+                span.style.position = 'absolute';
+                span.style.whiteSpace = 'nowrap';
+                span.style.fontFamily = style.fontFamily;
+                span.style.fontSize = style.fontSize;
+                span.style.fontWeight = style.fontWeight;
+                span.style.letterSpacing = style.letterSpacing;
+                span.textContent = label.textContent.trim();
+                document.body.appendChild(span);
+                const textWidth = span.getBoundingClientRect().width;
+                document.body.removeChild(span);
+
+            // 設定 select 寬度為文字寬 + 10px（加上一點 padding 空間）
+            const baseOffset = 10;
+
+            // 若為出生時間下拉，確保能完整顯示最長 option 文本，再額外加寬（目前 +30px）
+            let extraForBirthHour = 0;
+            let finalWidth = Math.ceil(textWidth) + baseOffset;
+            if (sel.id === 'birthHour') {
+                // 測量所有 option 的最大寬度
+                let maxOpt = 0;
+                const optSpan = document.createElement('span');
+                optSpan.style.visibility = 'hidden';
+                optSpan.style.position = 'absolute';
+                optSpan.style.whiteSpace = 'nowrap';
+                // 使用 select 的字型樣式
+                const sStyle = window.getComputedStyle(sel);
+                optSpan.style.fontFamily = sStyle.fontFamily;
+                optSpan.style.fontSize = sStyle.fontSize;
+                optSpan.style.fontWeight = sStyle.fontWeight;
+                document.body.appendChild(optSpan);
+                for (let i = 0; i < sel.options.length; i++) {
+                    optSpan.textContent = sel.options[i].text;
+                    const w = optSpan.getBoundingClientRect().width;
+                    if (w > maxOpt) maxOpt = w;
+                }
+                document.body.removeChild(optSpan);
+
+                // 最終寬度至少為最長 option + baseOffset
+                const optionNeeded = Math.ceil(maxOpt) + baseOffset;
+                // 額外補償（原先為 30px），保留此空間讓下拉外觀不擠
+                extraForBirthHour = 30;
+                finalWidth = Math.max(finalWidth, optionNeeded) + extraForBirthHour;
+            }
+                sel.style.width = finalWidth + 'px';
+                sel.style.maxWidth = 'none';
+                sel.style.boxSizing = 'content-box';
+            });
+        }
+
+        // debounce resize
+        let __adjTimeout = null;
+        window.addEventListener('resize', () => {
+            clearTimeout(__adjTimeout);
+            __adjTimeout = setTimeout(adjustSelectWidths, 120);
+        });
+        // run on DOM ready
+        document.addEventListener('DOMContentLoaded', adjustSelectWidths);
+        // also call once now (in case script loaded after DOM)
+        adjustSelectWidths();
+
         // Wrapper: 在按鈕上顯示 loading 動畫並故意等待 5 秒後才執行命盤計算
         async function startWithLoading() {
             const btn = document.getElementById('startBtn');

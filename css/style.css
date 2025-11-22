@@ -91,6 +91,12 @@ select {
   appearance: menulist-button;
 }
 
+/* Make the birth date input a bit narrower on larger screens so it doesn't look too wide */
+#birthDate {
+  width: auto;        /* allow max-width to take effect instead of forced 100% */
+  max-width: 240px;   /* change this value to taste (px) */
+}
+
 /* 運勢卡片詳情樣式 */
 .fortune-detail-item {
   font-size: 0.85rem;
@@ -149,4 +155,47 @@ select {
 
   /* 結果容器的外側間距減小，避免水平捲動 */
   .max-w-6xl { padding-left: 0.5rem; padding-right: 0.5rem; }
+
+  /* 在窄螢幕（手機）上，出生日期回復為整欄寬度以利觸控 */
+  #birthDate {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
+/* 調整輸入欄位在桌面版的 grid 欄寬，避免四欄被平均拉開造成過大間距 */
+@media (min-width: 768px) {
+  .input-grid {
+    /* 1: 出生日期（固定寬度較小）
+       2: 出生時間（可拉展，佔主要空間）
+       3: 性別（中等寬度）
+       4: 按鈕（固定寬度） */
+    grid-template-columns: minmax(140px, 220px) minmax(180px, 1fr) minmax(120px, 180px) 140px;
+    align-items: end; /* 讓按鈕與其他欄位底部對齊 */
+    column-gap: 0.28rem; /* 更小的欄位間距，讓出生日期與出生時間更貼近 */
+    row-gap: 0.5rem; /* 當換行時使用較小的垂直間距 */
+  }
+}
+
+/* 在桌面版將表單欄位內容置中（label 與 input/select 置中對齊）
+   讓整排感覺「全部集中」 */
+@media (min-width: 768px) {
+  .input-grid > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* 水平置中 label 和控制元件 */
+    justify-content: flex-end; /* 與原先 align-items: end 效果相符，將按鈕靠底部 */
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .input-grid label {
+    text-align: center;
+    width: 100%;
+  }
+
+  /* 按鈕欄位（最後一欄）保持按鈕寬度但置中 */
+  .input-grid > div:last-child {
+    justify-content: center;
+  }
 }
