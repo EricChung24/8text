@@ -21,7 +21,7 @@
 
         <!-- Input Area -->
         <div class="scroll-border rounded-xl p-8 mb-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div>
                     <label class="block text-[#d4b483] text-xs font-bold mb-2 uppercase tracking-wider">出生日期 (國曆)</label>
                     <input type="date" id="birthDate" class="w-full p-3 rounded-lg input-dark">
@@ -42,6 +42,14 @@
                         <option value="9">酉時 (17:00 - 19:00)</option>
                         <option value="10">戌時 (19:00 - 21:00)</option>
                         <option value="11">亥時 (21:00 - 23:00)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[#d4b483] text-xs font-bold mb-2 uppercase tracking-wider">性別</label>
+                    <select id="genderSelect" class="w-full p-3 rounded-lg input-dark">
+                        <option value="male">男性</option>
+                        <option value="female">女性</option>
+                        <option value="unspecified">不透露</option>
                     </select>
                 </div>
                 <div class="flex items-end">

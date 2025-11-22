@@ -103,7 +103,7 @@
                 wealth: '財富波動大，易有意外大筆支出（如罰單、修繕、請客）。',
                 career: '職場競爭白熱化，需防小人背後中傷。保持低調，做好份內事。',
                 side_wealth: '極差，絕對禁止高風險投資或賭博，逢賭必輸。',
-                romance: '男性易有感情波折或第三者；女性較強勢。感情易生變數。',
+                romance: '感情關係可能有波動或外部干擾，建議加強溝通與信任。',
                 health: '注意手腳受傷、呼吸道感染，或因情緒激動導致的身體不適。',
                 social: '朋友多但知心少，易被朋友拖累或利用，交友需謹慎。'
             },
@@ -112,7 +112,7 @@
                 wealth: '財源穩定，多勞多得。適合靠專業技術或才華賺錢。',
                 career: '靈感湧現，適合規劃、設計、學習新知。工作氛圍較輕鬆愉快。',
                 side_wealth: '不錯，偶有小幸運，適合穩健型的投資理財。',
-                romance: '心情愉悅，魅力提升。男性異性緣佳；女性有利生育或照顧家庭。',
+                romance: '心情愉悅，魅力提升，人際與家庭關係皆有正向發展。',
                 health: '心寬體胖，注意體重控制與腸胃消化問題，享受美食要節制。',
                 social: '人緣極佳，善解人意，聚餐機會多，是拓展人脈的好時機。'
             },
@@ -121,7 +121,7 @@
                 wealth: '大起大落，敢於冒險。適合創新模式賺錢，但要防衝動消費。',
                 career: '不滿現狀，想轉職或創業。才華洋溢但易頂撞上司，需修口德。',
                 side_wealth: '有投機運，但風險極高。眼光獨到，能發現冷門商機。',
-                romance: '情緒起伏大，易挑剔另一半。女性需防剋夫（對另一半要求過高）。',
+                romance: '情緒起伏較大，與伴侶或親密關係可能有磨擦，建議注意表達與傾聽。',
                 health: '注意神經衰弱、失眠、意外受傷。情緒管理是健康關鍵。',
                 social: '言語犀利，容易得罪人而不自知。雖有才華吸引人，但知音難尋。'
             },
@@ -130,7 +130,7 @@
                 wealth: '正財旺盛，薪水穩定增長。適合儲蓄、置產，累積財富。',
                 career: '工作表現穩健，按部就班即有收穫。適合簽訂合約、長期規劃。',
                 side_wealth: '不宜貪求偏財，腳踏實地為上策。中獎機率低。',
-                romance: '男性最有利婚嫁，感情穩定；女性亦有穩定對象。家庭和樂。',
+                romance: '感情運勢穩定，適合規劃長期關係與家庭事務。',
                 health: '健康狀況良好，生活規律。只需注意久坐導致的痠痛。',
                 social: '交往對象多為務實之人，社交圈穩定，無太多驚喜也無驚嚇。'
             },
@@ -139,7 +139,7 @@
                 wealth: '現金流動快，有額外收入或獎金。適合經商、業務推廣。',
                 career: '業績提升，有外派或出差機會。商業嗅覺靈敏。',
                 side_wealth: '極佳，投資眼光精準，可嘗試股票或副業，但見好就收。',
-                romance: '男性桃花大旺，異性緣極佳，但也易花心；女性享受浪漫。',
+                romance: '社交與異性緣旺盛，機會多但也需謹慎選擇對象與把握分寸。',
                 health: '交際應酬多，注意菸酒過量與肝臟負擔。',
                 social: '八面玲瓏，慷慨大方，容易結識有錢或有地位的朋友。'
             },
@@ -148,7 +148,7 @@
                 wealth: '財運隨著職位提升而增加，名利雙收。不宜走旁門左道。',
                 career: '升遷機率高，易得主管賞識。適合考試、考證照、爭取管理職。',
                 side_wealth: '保守為宜，名譽比金錢重要。避免涉及灰色地帶的錢財。',
-                romance: '女性最有利婚嫁（夫星出現）。男性家庭責任感重。',
+                romance: '婚姻與伴侶關係是重點，需以責任感與溝通建立穩固關係。',
                 health: '壓力稍大，注意精神緊張與頭痛問題，保持睡眠充足。',
                 social: '接觸的層次提高，多與長官、長輩打交道，言行需得體。'
             },
@@ -157,7 +157,7 @@
                 wealth: '險中求財，壓力大但獲利可能也大。需防意外破財或官司糾紛。',
                 career: '責任加重，任務艱鉅。適合大破大立、改革、開疆闢土。',
                 side_wealth: '起伏劇烈，心臟要夠強。勿因貪念涉險。',
-                romance: '女性爛桃花多（偏夫），易遇危險情人。男性性格剛烈易爭吵。',
+                romance: '情感界線需謹慎，易遇感情糾紛或不穩定關係，建議保持警覺與理性。',
                 health: '最需注意的一年。防血光之災、意外、過勞。忌衝動行事。',
                 social: '易犯小人，與人發生衝突。需忍辱負重，以柔克剛。'
             },
@@ -215,6 +215,7 @@
         function calculateBaZi() {
             const dateStr = document.getElementById('birthDate').value;
             const hourVal = parseInt(document.getElementById('birthHour').value);
+            const gender = document.getElementById('genderSelect') ? document.getElementById('genderSelect').value : 'unspecified';
 
             if (!dateStr) { alert("請輸入出生日期"); return; }
 
@@ -353,11 +354,11 @@
                 usefulEl = candidates[0]; // 這裡簡化取一個
             }
 
-            // 5. 渲染能量圖表與建議
-            renderAnalysis(elementsCount, totalScore, isStrong, usefulEl, dayMasterEl);
+            // 5. 渲染能量圖表與建議（依使用者選擇的性別顯示相對應日主性格）
+            renderAnalysis(elementsCount, totalScore, isStrong, usefulEl, dayMasterEl, gender);
 
-            // 6. 產生未來10年運勢
-            generateFortunes(STEMS[dStemIdx], 2026);
+            // 6. 產生未來10年運勢（性別已在一開始選擇，流年詳解使用中性文本）
+            generateFortunes(STEMS[dStemIdx], 2026, gender);
 
             // 顯示
             const res = document.getElementById('resultSection');
@@ -365,7 +366,7 @@
             res.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function renderAnalysis(counts, total, isStrong, usefulEl, dmEl) {
+    function renderAnalysis(counts, total, isStrong, usefulEl, dmEl, gender) {
             // 1. Bar Chart
             const chart = document.getElementById('fiveElementsChart');
             chart.innerHTML = '';
@@ -407,21 +408,39 @@
                 <p><span class="text-[#d4b483]">● 補運行為：</span>${suggestion.action}</p>
             `;
 
-            // 4. Day Master Character
-            // 簡單日主特質庫
-            const DM_TRAITS = {
+            // 4. Day Master Character (male/female/neutral)
+            const DM_TRAITS_MALE = {
+                wood: "仁慈、正直，具向上生長與責任感，為人正直但偶有固執，適合擔當領導或教導角色。",
+                fire: "熱情外向、勇於表現，行動力強、具感染力；需注意情緒管理與急躁。",
+                earth: "穩重踏實、可靠，是團隊的支柱；務實有耐性，但有時保守不易接受改變。",
+                gold: "果斷堅毅、做事效率高，重視原則與責任，可能顯得嚴肅或過於尖銳。",
+                water: "思維靈活、適應力強，善於策略與溝通，但情緒波動可能影響決策。"
+            };
+            const DM_TRAITS_FEMALE = {
+                wood: "溫柔體貼、擅長培養與照顧他人，具有耐心與包容力，適合教育或社群經營。",
+                fire: "魅力十足、熱情表達，具創造力與感染力；需留意衝動與情緒管理。",
+                earth: "穩重踏實、可靠，擅長理財與實務執行，是家庭或團隊的穩定力量。",
+                gold: "堅毅果斷、注重原則與品質，行事有條理但有時顯得嚴謹或高要求。",
+                water: "直覺敏銳、情感細膩，善於溝通與協調，但情緒起伏可能影響判斷。"
+            };
+            const DM_TRAITS_NEUTRAL = {
                 wood: "仁慈、正直，有向上生長的意志，但也容易固執。",
                 fire: "熱情、禮貌，充滿活力與感染力，但也容易急躁。",
                 earth: "穩重、誠信，包容力強，喜歡安穩，有時反應較慢。",
                 gold: "剛毅、果斷，講義氣，執行力強，有時過於尖銳。",
                 water: "聰明、靈活，適應力強，心思細膩，有時想法多變。"
             };
+
+            let DM_TRAITS = DM_TRAITS_NEUTRAL;
+            if (gender === 'male') DM_TRAITS = DM_TRAITS_MALE;
+            else if (gender === 'female') DM_TRAITS = DM_TRAITS_FEMALE;
+
             document.getElementById('dayMasterAnalysis').textContent = 
-                `您的日主五行屬【${EL_NAMES[dmEl]}】。${DM_TRAITS[dmEl]} 
-                 ${isStrong ? "命盤能量較強，個性通常較為主觀、有自信，適合主動出擊、承擔責任。" : "命盤能量較弱，個性通常較為隨和、善於配合，適合與人合作、穩中求勝。"}`;
+                `您的日主五行屬【${EL_NAMES[dmEl]}】。${DM_TRAITS[dmEl]} ` +
+                (isStrong ? "命盤能量偏強，適合主動承擔責任與領導；建議多用策略與耐心平衡強勢。" : "命盤能量偏弱，適合以合作取勝、吸納他人支持；建議強化自信與持續學習。");
         }
 
-        function generateFortunes(dmStem, startYear) {
+    function generateFortunes(dmStem, startYear, gender) {
             const container = document.getElementById('fortuneContainer');
             container.innerHTML = '';
 

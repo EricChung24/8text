@@ -89,3 +89,36 @@ body {
   font-size: 0.8rem;
   font-weight: bold;
 }
+
+/* 手機版優化: 窄螢幕時調整字級、間距與可點擊區域 */
+@media (max-width: 640px) {
+  /* 四柱的天干地支字體變小避免溢出 */
+  .gan-zhi-text {
+    font-size: 2rem;
+  }
+
+  /* 卡片與容器內邊距稍微縮小，讓內容能在小螢幕更好呈現 */
+  .scroll-border {
+    padding: 1rem !important;
+    border-radius: 0.75rem;
+  }
+
+  /* 表單輸入在行動裝置上增大觸控面積 */
+  .input-dark {
+    padding: 0.8rem !important;
+    font-size: 0.95rem;
+  }
+
+  /* 調整命盤標題與說明字級 */
+  h1 { font-size: 1.8rem; }
+
+  /* 流年卡字級、lucky-tag 與欄位間距 */
+  .fortune-detail-item { font-size: 0.95rem; }
+  .lucky-tag { font-size: 0.72rem; padding: 3px 6px; }
+
+  /* 五行 Bar 在窄螢幕做更高的可視性 */
+  #fiveElementsChart .w-full { height: 10px; }
+
+  /* 結果容器的外側間距減小，避免水平捲動 */
+  .max-w-6xl { padding-left: 0.5rem; padding-right: 0.5rem; }
+}
