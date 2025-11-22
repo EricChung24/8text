@@ -63,6 +63,34 @@ body {
   box-shadow: 0 0 10px rgba(212, 180, 131, 0.1);
 }
 
+/* Fix: prevent native pickers / dropdowns from being clipped or overflowing the form
+   - ensure inputs/selects use border-box and respect container width
+   - allow scroll-border containers to show native overlays (overflow: visible)
+   - give selects a stacking context so their dropdowns render above surrounding elements */
+.scroll-border {
+  overflow: visible; /* allow native dropdowns / date pickers to show outside the box */
+  position: relative; /* establish stacking context for z-index children */
+}
+
+input[type="date"], select, .input-dark {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* On some mobile browsers the native picker needs a higher z-index to appear above styled cards */
+select, input[type="date"] {
+  position: relative;
+  z-index: 20;
+}
+
+/* Keep default native appearance on mobile pickers but hide desktop arrows for cleaner UI */
+select::-ms-expand { display: none; }
+select {
+  -webkit-appearance: menulist-button;
+  appearance: menulist-button;
+}
+
 /* 運勢卡片詳情樣式 */
 .fortune-detail-item {
   font-size: 0.85rem;

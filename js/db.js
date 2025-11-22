@@ -55,35 +55,45 @@
                 direction: '東方',
                 number: '3、8',
                 item: '木質飾品、植物盆栽、書籍',
-                action: '多接觸大自然、森林浴、早起運動、閱讀進修'
+                action: '多接觸大自然、森林浴、早起運動、閱讀進修',
+                affirmation: '我扎根於內在，穩健而持續地成長。',
+                luckyMonths: [3,4]
             },
             fire: {
                 color: '<span class="text-red-400">紅色、紫色、粉色</span>',
                 direction: '南方',
                 number: '2、7',
                 item: '電子產品、紅色飾品、蠟燭/燈飾',
-                action: '多曬太陽、保持熱情、參加社交活動、吃溫熱食物'
+                action: '多曬太陽、保持熱情、參加社交活動、吃溫熱食物',
+                affirmation: '我散發熱情與光芒，吸引機會與支持。',
+                luckyMonths: [6,7]
             },
             earth: {
                 color: '<span class="text-yellow-400">黃色、棕色、咖啡色</span>',
                 direction: '中央、東北、西南',
                 number: '5、10',
                 item: '玉石、水晶、陶藝品',
-                action: '赤腳踩草地、爬山、園藝、誠信待人、存錢'
+                action: '赤腳踩草地、爬山、園藝、誠信待人、存錢',
+                affirmation: '我穩健踏實，能把每一步都走穩。',
+                luckyMonths: [8,9]
             },
             gold: {
                 color: '<span class="text-gray-200">白色、金色、銀色</span>',
                 direction: '西方',
                 number: '4、9',
                 item: '金屬飾品、手錶、機械類',
-                action: '重量訓練、整理收納、果斷決策、佩戴金銀飾品'
+                action: '重量訓練、整理收納、果斷決策、佩戴金銀飾品',
+                affirmation: '我果斷而穩健，秩序與效率是我的優勢。',
+                luckyMonths: [10,11]
             },
             water: {
                 color: '<span class="text-blue-400">黑色、藍色</span>',
                 direction: '北方',
                 number: '1、6',
                 item: '水景、魚缸、黑曜石',
-                action: '游泳、泡澡、多喝水、思考沈澱、保持靈活'
+                action: '游泳、泡澡、多喝水、思考沈澱、保持靈活',
+                affirmation: '我如水般靈活，能夠適時調整與流動。',
+                luckyMonths: [1,12]
             }
         };
 
@@ -96,7 +106,8 @@
                 side_wealth: '偏財運普通，切勿聽信小道消息投資，易因人損財。',
                 romance: '易有競爭者出現，或因朋友聚會認識對象。有伴者需防固執爭吵。',
                 health: '注意肝膽保養，避免熬夜，情緒容易亢奮或急躁。',
-                social: '社交活動頻繁，人氣旺，老友重逢，但需防口舌之爭。'
+                social: '社交活動頻繁，人氣旺，老友重逢，但需防口舌之爭。',
+                tips: '謹慎處理與朋友間的金錢往來；合作前寫下合約並明確分工。'
             },
             'rob_wealth': { // 劫財
                 title: '劫財運 (消耗/人際)',
@@ -105,7 +116,8 @@
                 side_wealth: '極差，絕對禁止高風險投資或賭博，逢賭必輸。',
                 romance: '感情關係可能有波動或外部干擾，建議加強溝通與信任。',
                 health: '注意手腳受傷、呼吸道感染，或因情緒激動導致的身體不適。',
-                social: '朋友多但知心少，易被朋友拖累或利用，交友需謹慎。'
+                social: '朋友多但知心少，易被朋友拖累或利用，交友需謹慎。',
+                tips: '控制支出、設置緊急預備金；與同事保持專業距離，避免捲入他人的糾紛。'
             },
             'eating_god': { // 食神
                 title: '食神運 (福氣/才華)',
@@ -114,7 +126,8 @@
                 side_wealth: '不錯，偶有小幸運，適合穩健型的投資理財。',
                 romance: '心情愉悅，魅力提升，人際與家庭關係皆有正向發展。',
                 health: '心寬體胖，注意體重控制與腸胃消化問題，享受美食要節制。',
-                social: '人緣極佳，善解人意，聚餐機會多，是拓展人脈的好時機。'
+                social: '人緣極佳，善解人意，聚餐機會多，是拓展人脈的好時機。',
+                tips: '多把握創作與表現機會；規劃作品集或作品發布節奏，善用人脈擴散影響力。'
             },
             'hurting_officer': { // 傷官
                 title: '傷官運 (變革/叛逆)',
@@ -123,7 +136,8 @@
                 side_wealth: '有投機運，但風險極高。眼光獨到，能發現冷門商機。',
                 romance: '情緒起伏較大，與伴侶或親密關係可能有磨擦，建議注意表達與傾聽。',
                 health: '注意神經衰弱、失眠、意外受傷。情緒管理是健康關鍵。',
-                social: '言語犀利，容易得罪人而不自知。雖有才華吸引人，但知音難尋。'
+                social: '言語犀利，容易得罪人而不自知。雖有才華吸引人，但知音難尋。',
+                tips: '在表達創新想法前準備溝通策略，避免正面衝突；把衝動轉化為短期試驗而非高風險投入。'
             },
             'direct_wealth': { // 正財
                 title: '正財運 (穩定/收穫)',
@@ -132,7 +146,8 @@
                 side_wealth: '不宜貪求偏財，腳踏實地為上策。中獎機率低。',
                 romance: '感情運勢穩定，適合規劃長期關係與家庭事務。',
                 health: '健康狀況良好，生活規律。只需注意久坐導致的痠痛。',
-                social: '交往對象多為務實之人，社交圈穩定，無太多驚喜也無驚嚇。'
+                social: '交往對象多為務實之人，社交圈穩定，無太多驚喜也無驚嚇。',
+                tips: '持續建立被動收入或退休計劃；簽約前多檢查條款，長期穩健為主。'
             },
             'indirect_wealth': { // 偏財
                 title: '偏財運 (機會/流動)',
@@ -141,7 +156,8 @@
                 side_wealth: '極佳，投資眼光精準，可嘗試股票或副業，但見好就收。',
                 romance: '社交與異性緣旺盛，機會多但也需謹慎選擇對象與把握分寸。',
                 health: '交際應酬多，注意菸酒過量與肝臟負擔。',
-                social: '八面玲瓏，慷慨大方，容易結識有錢或有地位的朋友。'
+                social: '八面玲瓏，慷慨大方，容易結識有錢或有地位的朋友。',
+                tips: '設定投資停利停損規則，分散風險；保持日常健康習慣以應付應酬。'
             },
             'direct_officer': { // 正官
                 title: '正官運 (地位/名聲)',
@@ -150,7 +166,8 @@
                 side_wealth: '保守為宜，名譽比金錢重要。避免涉及灰色地帶的錢財。',
                 romance: '婚姻與伴侶關係是重點，需以責任感與溝通建立穩固關係。',
                 health: '壓力稍大，注意精神緊張與頭痛問題，保持睡眠充足。',
-                social: '接觸的層次提高，多與長官、長輩打交道，言行需得體。'
+                social: '接觸的層次提高，多與長官、長輩打交道，言行需得體。',
+                tips: '建立時間管理與壓力管理習慣；重要會議或文件前多做預演以提升表現。'
             },
             'seven_killings': { // 七殺
                 title: '七殺運 (壓力/突破)',
@@ -159,7 +176,8 @@
                 side_wealth: '起伏劇烈，心臟要夠強。勿因貪念涉險。',
                 romance: '情感界線需謹慎，易遇感情糾紛或不穩定關係，建議保持警覺與理性。',
                 health: '最需注意的一年。防血光之災、意外、過勞。忌衝動行事。',
-                social: '易犯小人，與人發生衝突。需忍辱負重，以柔克剛。'
+                social: '易犯小人，與人發生衝突。需忍辱負重，以柔克剛。',
+                tips: '重大決策前三思並諮詢專家；高風險行為請降低槓桿或暫緩。'
             },
             'direct_resource': { // 正印
                 title: '正印運 (貴人/休養)',
@@ -168,7 +186,8 @@
                 side_wealth: '普通，心態保守，對投資興趣缺缺。',
                 romance: '感情平淡見真情，追求精神契合。適合見雙方家長。',
                 health: '身心放鬆，體重易增加。適合調養身體、接觸宗教心靈。',
-                social: '多得長輩緣，受人照顧。人際關係和諧溫暖。'
+                social: '多得長輩緣，受人照顧。人際關係和諧溫暖。',
+                tips: '善用貴人資源並維繫關係；安排進修時程，累積口碑與專業。'
             },
             'indirect_resource': { // 偏印
                 title: '偏印運 (靈感/孤獨)',
@@ -177,7 +196,8 @@
                 side_wealth: '時好時壞，直覺雖強但易鑽牛角尖。',
                 romance: '多疑敏感，容易冷戰或覺得孤獨。雙方溝通出現隔閡。',
                 health: '注意慢性病復發、神經系統敏感、失眠多夢。',
-                social: '喜靜不喜動，給人距離感。適合與志同道合的少數人深交。'
+                social: '喜靜不喜動，給人距離感。適合與志同道合的少數人深交。',
+                tips: '把創意紀錄下來並設定小目標嘗試實作；定期與朋友或導師交流以減少孤立。'
             }
         };
 
@@ -490,6 +510,9 @@
                         <div class="fortune-detail-item">
                             <span class="fortune-label">人際</span> ${detail.social}
                         </div>
+                        <div class="fortune-detail-item">
+                            <span class="fortune-label">建議</span> ${detail.tips || ''}
+                        </div>
                     </div>
                 `;
                 container.appendChild(card);
@@ -524,3 +547,32 @@
         
         // Default Date
         document.getElementById('birthDate').valueAsDate = new Date();
+
+        // Wrapper: 在按鈕上顯示 loading 動畫並故意等待 5 秒後才執行命盤計算
+        async function startWithLoading() {
+            const btn = document.getElementById('startBtn');
+            if (!btn) { // fallback
+                calculateBaZi();
+                return;
+            }
+            if (btn.disabled) return;
+
+            const originalHTML = btn.innerHTML;
+            try {
+                // disable button and show centered loading gif (hide text)
+                btn.disabled = true;
+                btn.classList.add('opacity-70', 'cursor-not-allowed');
+                btn.innerHTML = `<img src="https://media.tenor.com/2BLI5EO7yVAAAAAi/loading-image.gif" alt="loading" style="height:24px;display:block;margin:0 auto;">`;
+
+                // 故意等待 3 秒
+                await new Promise(resolve => setTimeout(resolve, 3000));
+
+                // 呼叫原本的計算函式
+                calculateBaZi();
+            } finally {
+                // 恢復按鈕狀態（無論成功或發生錯誤都要恢復）
+                btn.disabled = false;
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                btn.innerHTML = originalHTML;
+            }
+        }
