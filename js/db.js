@@ -613,9 +613,17 @@
                 extraForBirthHour = 30;
                 finalWidth = Math.max(finalWidth, optionNeeded) + extraForBirthHour;
             }
+            // 針對性別下拉：改為以 label 文字寬度作為寬度基準（視覺上接近「跟字一樣寬」）
+            else if (sel.id === 'genderSelect') {
+                // 直接以上面計算出的 textWidth 為基準，並加入極小緩衝（2px）與桌面額外 +40px
+                const tinyBuffer = 2;
+                const extraDesktop = desktop ? 40 : 0;
+                finalWidth = Math.ceil(textWidth) + tinyBuffer + extraDesktop;
+            }
                 sel.style.width = finalWidth + 'px';
                 sel.style.maxWidth = 'none';
-                sel.style.boxSizing = 'content-box';
+                // 與 CSS 的 box-sizing 保持一致，使用 border-box 以包含 padding
+                sel.style.boxSizing = 'border-box';
             });
         }
 

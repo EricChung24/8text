@@ -81,7 +81,8 @@ input[type="date"], select, .input-dark {
 /* On some mobile browsers the native picker needs a higher z-index to appear above styled cards */
 select, input[type="date"] {
   position: relative;
-  z-index: 20;
+  /* 提高 z-index，使下拉選單能疊在其他 UI 元素之上（桌面情況） */
+  z-index: 99999;
 }
 
 /* Keep default native appearance on mobile pickers but hide desktop arrows for cleaner UI */
@@ -173,15 +174,45 @@ select {
 /* 調整輸入欄位在桌面版的 grid 欄寬，避免四欄被平均拉開造成過大間距 */
 @media (min-width: 768px) {
   .input-grid {
-    /* 1: 出生日期（固定寬度較小）
-       2: 出生時間（可拉展，佔主要空間）
-       3: 性別（中等寬度）
-       4: 按鈕（固定寬度） */
-    grid-template-columns: minmax(140px, 220px) minmax(180px, 1fr) minmax(120px, 180px) 140px;
+    /* 1: 出生日期（固定較小）
+       2: 出生時間（可拉展）
+       3: 性別（較寬）
+       4: 按鈕（固定） */
+    grid-template-columns: minmax(120px, 200px) minmax(160px, 1fr) minmax(160px, 260px) 140px;
     align-items: end; /* 讓按鈕與其他欄位底部對齊 */
-    column-gap: 0.28rem; /* 更小的欄位間距，讓出生日期與出生時間更貼近 */
-    row-gap: 0.5rem; /* 當換行時使用較小的垂直間距 */
+    column-gap: 0.12rem; /* 進一步縮小欄位水平間距讓下拉更集中 */
+    row-gap: 0.4rem; /* 當換行時使用較小的垂直間距 */
   }
+}
+
+@media (min-width: 768px) {
+  /* 置中每個欄位內的表單控制元件，並確保 select 呈現為塊級元素以便 margin:auto 生效 */
+  .input-grid > div select,
+  .input-grid > div input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 讓性別下拉在桌面版更寬，保證它比其他下拉更顯眼 */
+  #genderSelect {
+    /* 讓性別下拉可以依字寬收縮：移除過大的 min-width，並減少內邊距以接近文字寬度 */
+    min-width: 0;
+    max-width: 380px;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
+}
+
+/* 確保 grid 與其子容器不會把原生下拉/日期 pickers 剪裁掉 */
+.input-grid,
+.input-grid > div {
+  overflow: visible;
+}
+
+/* 當 select 取得 focus 時再提高 z-index 以確保下拉顯示在最上層（預防某些覆蓋情況） */
+select:focus, input[type="date"]:focus {
+  z-index: 100000 !important;
 }
 
 /* 在桌面版將表單欄位內容置中（label 與 input/select 置中對齊）
