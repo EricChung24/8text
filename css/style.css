@@ -157,9 +157,16 @@ select {
   .max-w-6xl { padding-left: 0.5rem; padding-right: 0.5rem; }
 
   /* 在窄螢幕（手機）上，出生日期回復為整欄寬度以利觸控 */
+  /* 手機版：若希望日期欄較小，調整為固定上限並置中（保持可點擊） */
   #birthDate {
-    width: 100% !important;
-    max-width: none !important;
+    width: auto !important;
+    max-width: 200px !important; /* 手機上顯示較窄 */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.6rem !important;
+    font-size: 0.95rem !important;
+    appearance: none; /* 標準屬性 */
+    -webkit-appearance: none; /* 讓部分瀏覽器呈現更一致的大小 */
   }
 }
 
