@@ -74,7 +74,7 @@ body {
 
 input[type="date"], select, .input-dark {
   box-sizing: border-box;
-  width: 100%;
+  width: 125%;
   max-width: 100%;
 }
 
